@@ -1,0 +1,24 @@
+{
+  "name": "shopit",
+  "version": "1.0.0",
+  "description": "full ecommerce using mern stack",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
+    "seeder": "node loadData.js"
+  },
+  "author": "Nelson Pino",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "morgan": "^1.10.0"
+  }
+}

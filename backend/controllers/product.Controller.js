@@ -30,7 +30,8 @@ export const getProducts = catchErrorAsync (async (req, res, next) => {
     
 
     const apiFeatures = new APIFeatures(modelProduct.find(), req.query)
-                        .search()                    
+                        .search()  
+                        .filter()                  
 
     const products  = await apiFeatures.query;
 

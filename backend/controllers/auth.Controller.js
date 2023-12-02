@@ -6,7 +6,7 @@ export const registerUser = catchAsyncError( async (req, res, next) => {
 
     const { name, email, password } = req.body;
 
-    const user = await modelUser.create({
+    const newUser = await modelUser.create({
         name,
         email,
         password,
@@ -16,9 +16,12 @@ export const registerUser = catchAsyncError( async (req, res, next) => {
         },
     });
 
+    //Creación del Token.
+    const token = newUser.getJwtToken();
+         
     res.status(201).json({
-        success: true,
-        user
+        success: true, 
+        token
     });
 
 });

@@ -51,6 +51,14 @@ userSchema.pre('save', async function (next) {
     this.password = await bcryptjs.hash(this.password, 10);
 });
 
+
+// Compare password user.
+userSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcryptjs.compare(enteredPassword, this.password);
+}
+
+
+// Return JWT token.
 userSchema.methods.getJwtToken = function () {
     const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_TIME

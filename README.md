@@ -10,3 +10,6 @@ Funcionalidad del Sistema.
 . Creacion de Productos.
 . Modificacion de Productos.
 . Eliminacion de Productos.
+. busqueda de producto por nombre
+. filtrado por caqtegory
+' filtrado por rango de fecha

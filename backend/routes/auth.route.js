@@ -1,6 +1,5 @@
 import express from 'express';
-const router = express.Router();
-import { registerUser, loginUser, logout } from '../controllers/auth.Controller.js';
+const router = express.Router();git
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);

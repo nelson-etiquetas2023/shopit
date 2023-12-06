@@ -17,3 +17,9 @@ Funcionalidad del Sistema.
 2.- User, Roles y autorizacion.
 
 . Creación de usuarios.
+. login de usuario
+. logout de usuario
+. encriptacion de password
+. creacion de token de seguridad JWT
+. proteccion de ruta por token con usuario logeado
+. proteccion de ruta por roles de usuario

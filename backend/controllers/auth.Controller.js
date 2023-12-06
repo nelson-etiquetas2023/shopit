@@ -48,8 +48,7 @@ export const loginUser = catchAsyncError( async ( req, res, next ) => {
 
     sendToken(user, 200, res);
 
- });
-
+});
 
 // Logout user => /api/v1/logout. 
 export const logout = catchAsyncError( async ( req, res, next ) => {
@@ -64,4 +63,4 @@ export const logout = catchAsyncError( async ( req, res, next ) => {
         message: 'Logged out.'
     });
 
- });
+});

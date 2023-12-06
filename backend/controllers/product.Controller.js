@@ -5,7 +5,10 @@ import APIFeatures from '../utils/apiFeatures.js';
 
 
 //Nuevo producto
-export const newProduct = catchErrorAsync (async (req, res) => {
+export const newProduct = catchErrorAsync (async (req, res, next) => { 
+
+    req.body.user = req.user.id;
+
     //crear un producto nuevo.  
     const newProduct = new modelProduct({
         nameProduct: req.body.nameProduct,
@@ -16,7 +19,9 @@ export const newProduct = catchErrorAsync (async (req, res) => {
         stock: req.body.stock,
         numofReviews: req.body.numofReviews,
         reviews: req.body.reviews,
-        images: req.body.images
+        images: req.body.images,
+        user: req.body.user
+
     });
     //salvar el producto
     await newProduct.save();

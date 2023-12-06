@@ -18,7 +18,7 @@ export const registerUser = catchAsyncError( async ( req, res, next ) => {
     });
 
     //Save in Cookie.
-    sendToken(user, 200, res);
+    sendToken(newUser, 200, res);
         
 });
 

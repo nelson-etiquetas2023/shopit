@@ -69,6 +69,11 @@ const productSchema = new mongoose.Schema({
             required: [true, '?? comment of the reviews...']
         }
     }],
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
     images: [{
         public_id: {
             type: String,

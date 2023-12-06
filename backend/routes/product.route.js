@@ -15,7 +15,7 @@ router.get('/products',isAuthenticateUser, authorizeRoles('admin'), getProducts)
 
 router.get('/product/:id',isAuthenticateUser, authorizeRoles('admin'), getsingleProduct);
 
-router.post('/newProduct', newProduct);
+router.post('/admin/product/new',isAuthenticateUser ,authorizeRoles('admin'), newProduct);
 
 router.put('/products/:id', updateProduct);
 

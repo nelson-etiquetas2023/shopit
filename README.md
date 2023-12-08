@@ -24,3 +24,4 @@ Funcionalidad del Sistema.
 . Guardar el token en las cookies del navegador
 . proteccion de ruta por token con usuario logeado
 . proteccion de ruta por roles de usuario
+. Email para recuperacion de Password

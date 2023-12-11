@@ -33,3 +33,4 @@ Funcionalidad del Sistema.
 . Funcionaidad de user Profile.
 . Actualizacion password User.
 . Lista todos los usuarios  uno por ID.
+. Actualizar datos de los Usuaro y Eliminar Usuarios.

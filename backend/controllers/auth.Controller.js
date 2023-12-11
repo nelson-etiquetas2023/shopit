@@ -55,6 +55,34 @@ export const updatePassword = catchAsyncError( async ( req, res, next ) => {
 
 });
 
+// Update user profile.
+export const updateProfile = catchAsyncError( async (req, res, next) => {
+
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+
+    if (!req.body.email) {
+        return next(new errorHandler('email not entered...', 400));
+    }
+
+    //Update avatar: TODO.
+
+    const user = await modelUser.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    });
+
+    res.status(200).json({
+        success: true,
+    })
+
+});
+
+
 
 
 //Forgot Password.

@@ -6,6 +6,7 @@ Funcionalidad del Sistema.
 ==========================
 
 1.- Administracion de Productos.
+================================
 
 . Creacion de Productos.
 . Modificacion de Productos.
@@ -17,7 +18,7 @@ Funcionalidad del Sistema.
 ' filtrado por rango de precio
 
 2.- User, Roles y autorizacion.
-
+===============================
 . Creación de usuarios.
 . login de usuario
 . logout de usuario
@@ -29,3 +30,4 @@ Funcionalidad del Sistema.
 . Email para recuperacion de Password
 . Reset la contraseña.
 . Manejo de Errores (Duplicate Key - Errores de Json - Token Expired).
+. Funcionaidad de user Profile.

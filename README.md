@@ -28,4 +28,4 @@ Funcionalidad del Sistema.
 . proteccion de ruta por roles de usuario
 . Email para recuperacion de Password
 . Reset la contraseña.
-. Manejo de Errores (Dupolicate Key - Errores de Json).
+. Manejo de Errores (Duplicate Key - Errores de Json - Token Expired).

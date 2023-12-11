@@ -60,7 +60,6 @@ export const updateProfile = catchAsyncError( async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
-        role: req.body.role
     }
 
     if (!req.body.email) {
@@ -78,6 +77,28 @@ export const updateProfile = catchAsyncError( async (req, res, next) => {
     res.status(200).json({
         success: true,
     })
+
+});
+
+// Update user profile => /api/v1/admin/update/:id  
+export const updateUser = catchAsyncError( async (req, res, next) => {
+
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+
+    const user = await modelUser.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    });
+
+    res.status(200).json({
+        success:true,
+        user
+    });
 
 });
 
@@ -223,4 +244,22 @@ export const getUserDetails = catchErrorAsync( async ( req, res, next ) => {
         success:true,
         user
     });
+});
+
+export const deleteUser = catchAsyncError( async (req, res, next) => {
+
+    const user = await modelUser.findById(req.params.id);
+
+    if (!user) {
+        return next(new errorHandler(`User does not found with id: ${req.params.id}`));
+    }
+
+    //remove avatar from cloudinary - TODO. 
+
+    await modelUser.deleteOne(user);
+
+    res.status(200).json({
+        success: true
+    });
+
 });

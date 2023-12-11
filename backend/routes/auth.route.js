@@ -10,7 +10,9 @@ import {
     updatePassword,
     updateProfile,
     allUsers,
-    getUserDetails
+    getUserDetails,
+    updateUser,
+    deleteUser
 } from '../controllers/auth.Controller.js';
 
 import { authorizeRoles, isAuthenticateUser } from '../middlewares/auth.js';
@@ -23,8 +25,10 @@ router.put('/password/reset/:token', resetPassword);
 router.get('/profile', isAuthenticateUser, getUserProfile);
 router.put('/password/update', isAuthenticateUser , updatePassword);
 router.put('/profile/update', isAuthenticateUser, updateProfile);
-router.get('/admin/users',isAuthenticateUser, authorizeRoles('admin') ,allUsers);
-router.get('/admin/users/:id',isAuthenticateUser,authorizeRoles('admin'),getUserDetails)
+router.get('/admin/users',isAuthenticateUser,authorizeRoles('admin'),allUsers);
+router.get('/admin/users/:id',isAuthenticateUser,authorizeRoles('admin'),getUserDetails);
+router.put('/admin/user/:id',isAuthenticateUser,authorizeRoles('admin'),updateUser);
+router.delete('/admin/user/:id',isAuthenticateUser,authorizeRoles('admin'),deleteUser);
  
 export default router;
  

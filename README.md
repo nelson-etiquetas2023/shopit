@@ -10,6 +10,8 @@ Funcionalidad del Sistema.
 . Creacion de Productos.
 . Modificacion de Productos.
 . Eliminacion de Productos.
+. Busqueda de producto por su Id.
+. Listado de Productos
 . busqueda de producto por descripción
 . filtrado por category
 ' filtrado por rango de precio

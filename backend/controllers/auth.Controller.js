@@ -25,7 +25,6 @@ export const registerUser = catchAsyncError( async ( req, res, next ) => {
         
 });
 
-
 //Get currently logged in user details => /api/v1/profile.
 export const getUserProfile = catchAsyncError( async ( req, res , next ) => {
     
@@ -81,9 +80,6 @@ export const updateProfile = catchAsyncError( async (req, res, next) => {
     })
 
 });
-
-
-
 
 //Forgot Password.
 export const forgotPassword = catchErrorAsync(async ( req, res, next ) => {
@@ -202,4 +198,29 @@ export const logout = catchAsyncError( async ( req, res, next ) => {
         message: 'Logged out.'
     });
 
+});
+
+export const allUsers = catchAsyncError( async ( req, res, next ) => {
+
+    const users = await modelUser.find();
+
+    res.status(200).json({
+        success: true,
+        users
+    })
+});
+
+//Get user details => /api/v1/admin/user/:id
+export const getUserDetails = catchErrorAsync( async ( req, res, next ) => {
+
+    const user = await modelUser.findById(req.params.id);
+    
+    if (!user) {
+        return next(new errorHandler(`User does not found with id: ${req.params.id}`));
+    }
+
+    res.status(200).json({
+        success:true,
+        user
+    });
 });

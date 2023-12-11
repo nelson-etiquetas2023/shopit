@@ -32,3 +32,4 @@ Funcionalidad del Sistema.
 . Manejo de Errores (Duplicate Key - Errores de Json - Token Expired).
 . Funcionaidad de user Profile.
 . Actualizacion password User.
+. Lista todos los usuarios  uno por ID.

@@ -31,3 +31,4 @@ Funcionalidad del Sistema.
 . Reset la contraseña.
 . Manejo de Errores (Duplicate Key - Errores de Json - Token Expired).
 . Funcionaidad de user Profile.
+. Actualizacion password User.

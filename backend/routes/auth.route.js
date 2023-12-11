@@ -6,7 +6,8 @@ import {
     logout,
     forgotPassword,
     resetPassword,
-    getUserProfile
+    getUserProfile,
+    updatePassword
 } from '../controllers/auth.Controller.js';
 
 import { isAuthenticateUser } from '../middlewares/auth.js';
@@ -17,6 +18,7 @@ router.get('/logout', logout);
 router.post('/password/forgot', forgotPassword);
 router.put('/password/reset/:token', resetPassword);
 router.get('/profile', isAuthenticateUser, getUserProfile);
+router.put('/password/update', isAuthenticateUser , updatePassword);
 
  
 export default router;

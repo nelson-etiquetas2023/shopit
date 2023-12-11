@@ -25,16 +25,37 @@ export const registerUser = catchAsyncError( async ( req, res, next ) => {
         
 });
 
+
+//Get currently logged in user details => /api/v1/profile.
 export const getUserProfile = catchAsyncError( async ( req, res , next ) => {
     
     const user = await modelUser.findById(req.user.id);
-
     res.status(200).json({
         success: true,
         user
     });
 
 });
+
+// Update / Change password  => api/v1/password/update.
+export const updatePassword = catchAsyncError( async ( req, res, next ) => {
+
+    const user = await modelUser.findById(req.user.id).select('+password');
+
+    const isMatched = await user.comparePassword(req.body.oldPassword);
+    
+    if (!isMatched) {
+        return next(new errorHandler('Old paassword is incorrect.', 400));
+    }
+
+    user.password = req.body.password;
+    await user.save();
+
+    sendToken(user, 200, res);
+
+});
+
+
 
 //Forgot Password.
 export const forgotPassword = catchErrorAsync(async ( req, res, next ) => {

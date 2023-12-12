@@ -34,3 +34,6 @@ Funcionalidad del Sistema.
 . Actualizacion password User.
 . Lista todos los usuarios  uno por ID.
 . Actualizar datos de los Usuaro y Eliminar Usuarios.
+
+3.- Administracion de Ordenes.
+==============================

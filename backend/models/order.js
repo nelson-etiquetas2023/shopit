@@ -1,4 +1,4 @@
-import mongoose from 'moongose';
+import mongoose from 'mongoose';
 
 const orderSchema = mongoose.Schema({
     shippingInfo: {
@@ -28,7 +28,7 @@ const orderSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    OrdenItems: [{
+    orderItems: [{
         name: {
             type: String,
             required: true

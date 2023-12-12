@@ -37,4 +37,5 @@ Funcionalidad del Sistema.
 
 3.- Administracion de Ordenes.
 ==============================
-. Crear guardar en base de datos Ordenes
+. Crear y guardar en base de datos Ordenes.
+. Buscar Order por Id y las ordenes por usuario.

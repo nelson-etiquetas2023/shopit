@@ -40,3 +40,4 @@ Funcionalidad del Sistema.
 . Crear y guardar en base de datos Ordenes.
 . Buscar Order por Id y las ordenes por usuario.
 . Obtener todas las ordenes del sistema y el calculo general en moneda.
+. Modificar ordenes del carrito.

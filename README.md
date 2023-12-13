@@ -41,4 +41,5 @@ Funcionalidad del Sistema.
 . Buscar Order por Id y las ordenes por usuario.
 . Obtener todas las ordenes del sistema y el calculo general en moneda.
 . Modificar ordenes del carrito.
-. Eliminación de Ordenes
+. Eliminación de Ordenes.
+. Crear y agregar comentarios de los productos.

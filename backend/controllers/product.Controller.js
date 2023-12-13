@@ -137,4 +137,16 @@ export const createProductReview = catchErrorAsync( async (req, res, next) => {
     });
 });
 
+//Get Product Reviews => api/v1/reviews
+export const getProductReviews = catchErrorAsync( async ( req, res, next ) =>{
+
+    const product = await modelProduct.findById(req.query.id);
+
+    res.status(200).json({
+        success: true,
+        reviews: product.reviews
+    });
+});
+
+
 

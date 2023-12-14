@@ -44,3 +44,4 @@ Funcionalidad del Sistema.
 . Eliminación de Ordenes.
 . Crear y agregar comentarios de los productos.
 . Obtener todos los comentarios por un producto determinado.
+. Borrar comentarios de los productos

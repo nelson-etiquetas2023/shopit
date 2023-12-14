@@ -114,7 +114,6 @@ async function updateStock(id, quantity) {
 }
 
 // Delete Order => api/v1/admin/order/:id
-
 export const deleteOrder = catchAsyncErrors( async ( req, res, next ) => {
    
    const order = await Order.findById(req.params.id);

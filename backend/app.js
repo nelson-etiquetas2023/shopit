@@ -1,4 +1,4 @@
-import productsRoute from './routes/product.route.js';
+import productRoute from './routes/product.route.js';
 import authRoute from './routes/auth.route.js';
 import orderRoute from './routes/order.route.js';
 import express  from "express";
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: '*'}));
 
-app.use('/api/v1', productsRoute);
+app.use('/api/v1', productRoute);
 app.use('/api/v1', authRoute);
 app.use('/api/v1', orderRoute); 
 
@@ -22,5 +22,4 @@ app.use('/api/v1', orderRoute);
 app.use(errorMiddleware);
 
 export default app;
-
 

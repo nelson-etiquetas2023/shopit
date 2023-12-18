@@ -63,8 +63,6 @@ nav {
   color: white;
 }
 
-
-
 #cart {
   font-size: 1rem;
   color: white;
@@ -108,8 +106,8 @@ nav {
 }
 
 .card-img-top {
-  width: 200px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 .ratings {
@@ -149,7 +147,7 @@ footer {
 
 #cart_btn,
 #review_btn {
-  border-radius: 2rem;
+  /*border-radius: 2rem;*/
   background-color: #fa9c23;
   border: none;
   padding: 0.5rem 2rem;

@@ -11,9 +11,7 @@ function App() {
       <div className="App">
       <Header/>
         <Routes>    
-            <div className='container container-fluid'>
-              <Route path = "/" element={<Home/>}/>
-            </div>
+             <Route path = "/" element={<Home/>}/>
         </Routes>
       <Footer/>
       </div>  

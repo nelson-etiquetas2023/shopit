@@ -13,11 +13,12 @@ export const getproducts = () => async (dispatch) => {
         dispatch(loadProductsRequest());
         const { data } = await axios.get('http://localhost:4000/api/v1/products');
         dispatch(loadProductsSuccess({
-            payload: data
+            products: data.products,
+            productCount: data.productCount
         }));
     } catch (error) {
         dispatch(loadProductsError({
-            payload: error.response.data.message
+            error: error.response.data.message
         }));
     }
 }

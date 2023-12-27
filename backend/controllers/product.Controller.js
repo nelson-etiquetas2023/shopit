@@ -14,6 +14,7 @@ export const newProduct = catchErrorAsync (async (req, res, next) => {
         nameProduct: req.body.nameProduct,
         description: req.body.description,
         price: req.body.price,
+        rating: req.body.rating,
         category: req.body.category,
         seller: req.body.seller,
         stock: req.body.stock,
@@ -33,7 +34,7 @@ export const newProduct = catchErrorAsync (async (req, res, next) => {
 //obtener todos los productos en la basedatos => api/v1/products/?keyword=apple [get]
 export const getProducts = catchErrorAsync (async (req, res, next) => {
     
-    const resPerPage = 4;
+    const resPerPage = 8;
     const productCount = await modelProduct.countDocuments();
 
     const apiFeatures = new APIFeatures(modelProduct.find(), req.query)

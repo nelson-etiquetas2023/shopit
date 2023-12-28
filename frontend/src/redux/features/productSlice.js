@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     products: [],
     loading: null,
-    error: null
+    error: null,
+    product: {}
 };
-
 
 const productsSlice = createSlice({
     name: "products",
@@ -34,16 +34,27 @@ const productsSlice = createSlice({
         getAllProducts: (state,action) => {},
         getProductId: (state, action) => {},
         deleteProductId: (state, action) => {},
-        updateProductId: (state, action) => {}
+        updateProductId: (state, action) => {},
+        productDetailsRequest: (state, action) => {
+            state.loading = true;
+        },
+        productDetailsSuccess: (state, action) => {
+            state.loading = false;
+            state.product =  action.payload.product;
+        },
+        productDetailsErrors: (state, action) => {
+            state.error = action.payload.error;
+        }
     }   
-
-
 });
 
 export const {
     loadProductsRequest,
     loadProductsSuccess,
     loadProductsError,
+    productDetailsRequest,
+    productDetailsSuccess,
+    productDetailsErrors,
     clearErrors
 } = productsSlice.actions;
 

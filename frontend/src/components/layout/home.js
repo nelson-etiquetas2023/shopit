@@ -3,10 +3,13 @@ import MetaData from "../layout/MetaData.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getproducts } from "../../redux/features/productThunks";
 import Product from "../product/Product.js";
+import Loader from './Loader.js';
 
 const Home = () => {
+
+
   const dispatch = useDispatch();
-  const { loading, products, error, productsCount } = useSelector(
+  const { loading, products } = useSelector(
     (state) => state.products
   );
 
@@ -16,13 +19,11 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
+      {loading ? <Loader /> : (
         <Fragment>
           <MetaData title={"Buy Best Products Online"} />
           <div className="container container-fluid">
-            <h1 id="products_heading" className="text-secondary">
+          <h1 id="products_heading" className="text-secondary">
               Latest Products
             </h1>
             <section id="products" className="mt-5">
@@ -33,7 +34,9 @@ const Home = () => {
                   ))}
               </div>
             </section>
-          </div>
+          </div>         
+          
+          
         </Fragment>
       )}
     </Fragment>

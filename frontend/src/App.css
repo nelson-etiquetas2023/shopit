@@ -215,6 +215,7 @@ footer {
 
 .cart-item a {
   color: grey;
+  text-decoration: none;
 }
 
 #delete_cart_item {

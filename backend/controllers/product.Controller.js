@@ -44,14 +44,13 @@ export const getProducts = catchErrorAsync (async (req, res, next) => {
 
     const products  = await apiFeatures.query;
 
-    setTimeout(() => {
         res.status(200).json({
             success: true,
             count: products.length,
             productCount,
             products
         });
-    },500);
+    
 });
 
 //obtener un producto por su id.

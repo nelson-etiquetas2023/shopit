@@ -48,6 +48,7 @@ export const getProducts = catchErrorAsync (async (req, res, next) => {
             success: true,
             count: products.length,
             productCount,
+            resPerPage, 
             products
         });
     

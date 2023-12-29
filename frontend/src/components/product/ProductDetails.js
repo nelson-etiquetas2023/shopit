@@ -35,9 +35,6 @@ const ProductDetails = () => {
                   </Carousel.Item>
                 ))}
               </Carousel>
-
-
-
               <div className="row justify-content-start mt-5">
                 <div className="col-2 ms-4 mt-2">
                   <a href="/" role="button">
@@ -45,8 +42,8 @@ const ProductDetails = () => {
                       className="d-block border rounded p-3 cursor-pointer"
                       height="100"
                       width="100"
-                      src="./images//default_product.png"
-                      alt=""
+                      src={product.images[0].url}
+                      alt="foto minitura"
                     />
                   </a>
                 </div>

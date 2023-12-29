@@ -10,14 +10,15 @@ import {
 } from "./productSlice.js";
 
 // get all products.
-export const getproducts = () => async (dispatch) => {
+export const getproducts = (currentPage) => async (dispatch) => {
   try {
     dispatch(loadProductsRequest());
-    const { data } = await axios.get("http://localhost:4000/api/v1/products");
+    const { data } = await axios.get(`http://localhost:4000/api/v1/products?page=${currentPage}`);
     dispatch(
       loadProductsSuccess({
         products: data.products,
         productCount: data.productCount,
+        resPerPage: data.resPerPage
       })
     );
   } catch (error) {

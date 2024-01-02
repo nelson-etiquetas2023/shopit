@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MetaData from "../layout/MetaData.js";
+import MetaData from "./MetaData.js";
 import { useDispatch, useSelector } from "react-redux";
-import { getproducts } from "../../redux/features/productThunks";
+import { getproducts } from "../../redux/features/productThunks.js";
 import Product from "../product/Product.js";
 import Loader from './Loader.js';
 import Pagination from 'react-js-pagination';
+import { useParams } from "react-router-dom";
 
 const Home = () => {
 
@@ -15,10 +16,13 @@ const Home = () => {
     (state) => state.products
   );
 
+  const {keyword} = useParams();
 
   useEffect(() => {
-    dispatch(getproducts(currentPage));
-  }, [dispatch,currentPage]);
+
+    dispatch(getproducts(keyword, currentPage));
+
+  }, [dispatch, keyword, currentPage]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber)
@@ -41,7 +45,9 @@ const Home = () => {
                   ))}
               </div>
             </section>
-            <div className="d-flex justify-content-center mt-5"> 
+
+            {resPerPage <= productCount && (
+              <div className="d-flex justify-content-center mt-5"> 
                     <Pagination
                       activePage={currentPage}
                       itemsCountPerPage={resPerPage}
@@ -55,6 +61,8 @@ const Home = () => {
                       linkClass = "page-link "
                     />
             </div>
+            )}
+            
           </div>         
         </Fragment>
       )}

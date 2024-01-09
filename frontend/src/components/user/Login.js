@@ -5,8 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../layout/Loader.js";
 import MetaData from "../layout/MetaData.js";
 import {Link} from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const notifyOk = () => toast("los datos son correctos...OK.");
+  const notifyError = () => toast("se produjo un error de credenciales...");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -18,11 +22,12 @@ const Login = () => {
   useEffect(() => {
 
     if (isAuthenticated) {
+      notifyOk();
       navigate("/");
     }
 
     if (error) {
-     
+      notifyError();
       dispatch(clearErrors);
     }
   }, [dispatch, isAuthenticated, error, navigate, email, password]);
@@ -93,6 +98,18 @@ const Login = () => {
           </div>
         </Fragment>
       )}
+       <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Fragment>
   );
 };

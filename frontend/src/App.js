@@ -4,6 +4,7 @@ import Home from "./components/layout/Home.js";
 import Login from "./components/user/Login.js"
 import ProductDetails from "./components/product/ProductDetails.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from '../src/components/user/Register.js';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/search/:keyword" element={<Home />} />
           <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
         <Footer />
       </div>

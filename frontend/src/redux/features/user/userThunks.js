@@ -8,6 +8,9 @@ import {
   REGISTER_USERS_REQUEST,
   REGISTER_USERS_SUCCESS,
   REGISTER_USERS_FAIL,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_FAIL,
 } from "./userSlice.js";
 
 // Login.
@@ -59,6 +62,29 @@ export const register = (userData) => async (dispatch) => {
     dispatch(
       REGISTER_USERS_FAIL({
         payload: error.response.data.message,
+      })
+    );
+  }
+};
+
+export const loadUser = () => async (dispatch) => {
+  try {
+    dispatch(LOAD_USER_REQUEST());
+
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:4000/api/v1/profile",
+    });
+
+    dispatch(
+      LOAD_USER_SUCCESS({
+        user: data.user,
+      })
+    );
+  } catch (error) {
+    dispatch(
+      LOAD_USER_FAIL({
+        error: error.response.data.message,
       })
     );
   }

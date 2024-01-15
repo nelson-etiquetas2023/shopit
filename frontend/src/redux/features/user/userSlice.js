@@ -35,13 +35,13 @@ const userSlice = createSlice({
     REGISTER_USERS_SUCCESS: (state, action) => {
       state.loading = false;
       state.isAuthenticated = true;
-      state.user = action.payload;
+      state.user = action.payload.user;
     },
     REGISTER_USERS_FAIL: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = null;
-      state.error = action.payload;
+      state.error = action.payload.error;
     },
     //carga de usuario.
     LOAD_USER_REQUEST: (state, action) => {
@@ -51,13 +51,27 @@ const userSlice = createSlice({
     LOAD_USER_SUCCESS: (state, action) => {
       state.loading = false;
       state.isAuthenticated = true;
-      state.user = action.payload;
+      state.user = action.payload.user;
     },
     LOAD_USER_FAIL: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = null;
     },
+
+    CERRAR_SESSION_SUCCESS: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = null;
+    },
+
+    CERRAR_SESSION_FAIL: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = null;
+      state.error = action.payload.error;
+    },
+
     CLEAR_ERROR: (state, action) => {
       state.error = null;
     },
@@ -75,6 +89,8 @@ export const {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  CERRAR_SESSION_SUCCESS,
+  CERRAR_SESSION_FAIL,
 } = userSlice.actions;
 
 export default userSlice.reducer;

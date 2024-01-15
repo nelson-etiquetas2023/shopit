@@ -11,6 +11,8 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  CERRAR_SESSION_SUCCESS,
+  CERRAR_SESSION_FAIL,
 } from "./userSlice.js";
 
 // Login.
@@ -84,6 +86,25 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch(
       LOAD_USER_FAIL({
+        error: error.response.data.message,
+      })
+    );
+  }
+};
+
+export const closeSession = () => async (dispatch) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:4000/api/v1/logout",
+    });
+
+    console.log(data);
+
+    dispatch(CERRAR_SESSION_SUCCESS());
+  } catch (error) {
+    dispatch(
+      CERRAR_SESSION_FAIL({
         error: error.response.data.message,
       })
     );

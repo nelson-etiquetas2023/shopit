@@ -6,9 +6,6 @@ import ProductDetails from "./components/product/ProductDetails.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "../src/components/user/Register.js";
 
-import store from "../src/redux/store.js";
-import { loadUser } from "../src/redux/features/user/userThunks.js";
-
 function App() {
   return (
     <Router>

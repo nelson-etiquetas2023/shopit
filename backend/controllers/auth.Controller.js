@@ -212,6 +212,8 @@ export const logout = catchAsyncError(async (req, res, next) => {
     success: true,
     message: "Logged out.",
   });
+
+  console.log("Logged out.");
 });
 
 export const allUsers = catchAsyncError(async (req, res, next) => {

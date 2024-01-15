@@ -3,9 +3,23 @@ import "../../App.css";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { closeSession } from "../../redux/features/user/userThunks.js";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.auth);
+
+  const logoutHandler = () => {
+    try {
+      dispatch(closeSession());
+      toast("logged out successfully.!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Fragment>
       <nav className="navbar row">
@@ -70,7 +84,10 @@ const Header = () => {
                 <Link className="dropdown-item" to="/me">
                   Profile
                 </Link>
-                <Link className="dropdown-item text-danger" to="/">
+                <Link
+                  className="dropdown-item text-danger"
+                  to="/"
+                  onClick={logoutHandler}>
                   Logout
                 </Link>
               </div>
@@ -84,6 +101,18 @@ const Header = () => {
           )}
         </div>
       </nav>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Fragment>
   );
 };

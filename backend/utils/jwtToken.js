@@ -11,6 +11,8 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
 
+  res.cookie("jwt", token);
+
   res.status(statusCode).cookie("token", token, options).json({
     success: true,
     token,

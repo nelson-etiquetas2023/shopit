@@ -5,7 +5,9 @@ import Login from "./components/user/Login.js";
 import ProductDetails from "./components/product/ProductDetails.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "../src/components/user/Register.js";
+import UpdateProfile from "./components/user/UpdateProfile.js";
 import Profile from "./components/user/Profile.js";
+import ProtectedRoute from "./components/route/ProtectedRoute.js";
 
 function App() {
   return (
@@ -18,7 +20,10 @@ function App() {
           <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/me" Component={Profile} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/me" element={<Profile />} />
+            <Route path="/me/update" element={<UpdateProfile />} />
+          </Route>
         </Routes>
         <Footer />
       </div>

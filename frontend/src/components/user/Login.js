@@ -4,13 +4,11 @@ import { login, clearErrors } from "../../redux/features/user/userThunks.js";
 import { useNavigate } from "react-router-dom";
 import Loader from "../layout/Loader.js";
 import MetaData from "../layout/MetaData.js";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const notifyOk = () => toast("los datos son correctos...OK.");
-  const notifyError = () => toast("se produjo un error de credenciales...");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -20,23 +18,24 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     if (isAuthenticated) {
-      notifyOk();
+      toast("los datos son correctos...");
       navigate("/");
     }
 
     if (error) {
-      notifyError();
       dispatch(clearErrors);
     }
   }, [dispatch, isAuthenticated, error, navigate, email, password]);
 
+  if (error) {
+    toast("se produjo un error...");
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
-  }
-
+  };
 
   return (
     <Fragment>
@@ -80,11 +79,14 @@ const Login = () => {
                   />
                 </div>
 
-                < Link to="/password/forgot" className="float-end mb-4">
+                <Link to="/password/forgot" className="float-end mb-4">
                   Forgot Password?
                 </Link>
 
-                <button id="login_button" type="submit" className="btn w-100 py-2">
+                <button
+                  id="login_button"
+                  type="submit"
+                  className="btn w-100 py-2">
                   LOGIN
                 </button>
 
@@ -98,8 +100,8 @@ const Login = () => {
           </div>
         </Fragment>
       )}
-       <ToastContainer
-        position="top-right"
+      <ToastContainer
+        position="botton-center"
         autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}

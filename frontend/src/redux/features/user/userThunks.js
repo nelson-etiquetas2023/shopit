@@ -13,6 +13,10 @@ import {
   LOAD_USER_FAIL,
   CERRAR_SESSION_SUCCESS,
   CERRAR_SESSION_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_RESET,
+  UPDATE_PROFILE_FAIL,
 } from "./userSlice.js";
 
 // Login.
@@ -113,4 +117,30 @@ export const closeSession = () => async (dispatch) => {
 
 export const clearErrors = () => async (dispatch) => {
   dispatch(CLEAR_ERROR());
+};
+
+//Update Users
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch(UPDATE_PROFILE_REQUEST());
+
+    const { data } = await axios({
+      method: "put",
+      url: "http://localhost:4000/api/v1/profile/update",
+      data: userData,
+      headers: "ContentType: multipart/form-data",
+    });
+
+    dispatch(
+      UPDATE_PROFILE_SUCCESS({
+        user: data.user,
+      })
+    );
+  } catch (error) {
+    dispatch(
+      UPDATE_PROFILE_FAIL({
+        payload: error.response.data.message,
+      })
+    );
+  }
 };

@@ -60,14 +60,34 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
   };
+  console.log(req.body.name);
+  console.log(req.body.email);
+  console.log(req.body.id);
+  console.log(req.body.avatar);
 
   if (!req.body.email) {
     return next(new errorHandler("email not entered...", 400));
   }
 
-  //Update avatar: TODO.
+  //Update avatar.
 
-  const user = await modelUser.findByIdAndUpdate(req.user.id, newUserData, {
+  if (req.body.avatar !== "") {
+    const user = await modelUser.findById(req.body.id);
+    const image_id = user.avatar.public_id;
+    const res = await cloudinary.uploader.destroy(image_id);
+
+    const result = await cloudinary.uploader.upload(req.body.avatar, {
+      folder: "shopit/avatar",
+      width: 150,
+    });
+
+    newUserData.avatar = {
+      public_id: result.public_id,
+      url: result.secure_url,
+    };
+  }
+
+  const user = await modelUser.findByIdAndUpdate(req.body.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
@@ -75,6 +95,7 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    user,
   });
 });
 

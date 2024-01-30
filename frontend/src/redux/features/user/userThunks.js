@@ -13,9 +13,11 @@ import {
   LOAD_USER_FAIL,
   CERRAR_SESSION_SUCCESS,
   CERRAR_SESSION_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,
-  UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_FAIL,
 } from "./userSlice.js";
 
@@ -29,6 +31,7 @@ export const login = (email, password) => async (dispatch) => {
       url: "http://localhost:4000/api/v1/login",
       data: { email, password },
       headers: "ContentType: application/json",
+      withCredentials: true,
     });
 
     dispatch(
@@ -140,6 +143,35 @@ export const updateProfile = (userData) => async (dispatch) => {
     dispatch(
       UPDATE_PROFILE_FAIL({
         payload: error.response.data.message,
+      })
+    );
+  }
+};
+
+//update password
+export const updatePassword = (password) => async (dispatch) => {
+  try {
+    dispatch(UPDATE_PASSWORD_REQUEST());
+
+    const { data } = await axios({
+      method: "put",
+      url: "http://localhost:4000/api/v1/password/update",
+      data: password,
+      headers: "ContentType: application/json",
+      withCredentials: true,
+    }).catch((error) => {
+      console.log(error);
+    });
+
+    dispatch(
+      UPDATE_PASSWORD_SUCCESS({
+        user: data.user,
+      })
+    );
+  } catch (error) {
+    dispatch(
+      UPDATE_PASSWORD_FAIL({
+        payload: error.response,
       })
     );
   }

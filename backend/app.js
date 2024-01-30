@@ -17,7 +17,13 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload());
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
 
 app.use("/api/v1", productRoute);
 app.use("/api/v1", authRoute);

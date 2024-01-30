@@ -8,6 +8,7 @@ import Register from "../src/components/user/Register.js";
 import UpdateProfile from "./components/user/UpdateProfile.js";
 import Profile from "./components/user/Profile.js";
 import ProtectedRoute from "./components/route/ProtectedRoute.js";
+import UpdatePassword from "./components/user/UpdatePassword.js";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/me" element={<Profile />} />
             <Route path="/me/update" element={<UpdateProfile />} />
+            <Route path="/update/password" element={<UpdatePassword />} />
           </Route>
         </Routes>
         <Footer />

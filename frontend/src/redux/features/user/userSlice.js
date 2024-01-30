@@ -73,9 +73,15 @@ const userSlice = createSlice({
     },
     UPDATE_PASSWORD_SUCCESS: (state, action) => {
       state.loading = false;
+      state.isUpdate = action.payload;
     },
+    UPDATE_PASSWORD_RESET: (state, action) => {
+      state.isUpdate = false;
+    },
+
     UPDATE_PASSWORD_FAIL: (state, action) => {
       state.loading = false;
+      state.error = action.payload;
     },
 
     UPDATE_PROFILE_REQUEST: (state, action) => {
@@ -111,6 +117,7 @@ export const {
   CERRAR_SESSION_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_FAIL,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,

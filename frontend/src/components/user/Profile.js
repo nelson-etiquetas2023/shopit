@@ -49,7 +49,7 @@ const Profile = () => {
               )}
 
               <Link
-                href="/password/update"
+                to="/update/password"
                 className="btn btn-primary btn-block mx-3">
                 Change Password
               </Link>

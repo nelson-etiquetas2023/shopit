@@ -41,14 +41,13 @@ export const getUserProfile = catchAsyncError(async (req, res, next) => {
 // Update / Change password  => api/v1/password/update.
 export const updatePassword = catchAsyncError(async (req, res, next) => {
   const user = await modelUser.findById(req.user.id).select("+password");
-
   const isMatched = await user.comparePassword(req.body.oldPassword);
 
   if (!isMatched) {
     return next(new errorHandler("Old paassword is incorrect.", 400));
   }
 
-  user.password = req.body.password;
+  user.password = req.body.newPassword;
   await user.save();
 
   sendToken(user, 200, res);
@@ -60,10 +59,6 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
   };
-  console.log(req.body.name);
-  console.log(req.body.email);
-  console.log(req.body.id);
-  console.log(req.body.avatar);
 
   if (!req.body.email) {
     return next(new errorHandler("email not entered...", 400));
